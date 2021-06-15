@@ -1,0 +1,58 @@
+#homepg-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+#homepg{
+    display:flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+#right-part{
+    float: right;
+}
+
+#welcome{
+    display: flex;
+    justify-content: center;
+    color: rgb(117, 117, 182);
+}
+
+#logo{
+    display: flex;
+    justify-content: center;
+}
+
+#button-wrapper{
+    display:flex;
+    justify-content: center;
+}
+
+#join-meeting-button{
+    background-color: rgb(117, 117, 182);
+    margin: 10px;
+    height: 50px;
+    width: 200px;
+    border-radius: 30px;
+    color: aliceblue;
+}
+
+#create-meeting-button{
+    background-color: rgb(117, 117, 182);
+    margin: 10px;
+    height: 50px;
+    width: 200px;
+    border-radius: 30px;
+    color: aliceblue;
+}
+
+#gif{
+    display: flex;
+    justify-content: center;
+}
+
