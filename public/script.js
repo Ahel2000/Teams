@@ -37,6 +37,7 @@ socket.on('user-disconnected', userId => {
 socket.on('receive-message',(userId,message) => {
   const div = document.createElement('div')
   div.textContent = userId + ": " + message
+  div.style.background = '#ffffff'
   chatContents.append(div)
 })
 
@@ -64,6 +65,8 @@ function addVideoStream(video, stream) {
     video.play()
   })
   videoGrid.append(video)
+  let totalUsers = document.getElementsByTagName("video").length;
+  
 }
 
 send.addEventListener('click',function(e){
@@ -71,6 +74,7 @@ send.addEventListener('click',function(e){
   if(message === "")return
   const div = document.createElement('div')
   div.textContent = message
+  div.style.background = '#ffffff'
   chatContents.append(div)
   socket.emit('send-message',10,message,ROOM_ID)
 })

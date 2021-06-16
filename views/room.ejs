@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
   <script>
     const ROOM_ID = "<%= roomId %>"
   </script>
@@ -12,40 +16,49 @@
   <script src="script.js" defer></script>
   <title>Document</title>
   <style>
+    *{
+      background-color: black;
+    }
     #videopluschat{
       width:100%;
-      height:90%;
+      height:80%;
       display: flex;
     }
     
     #video-grid {
-      width:70%;
-      max-height: 70%;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, 200px);
-      grid-auto-rows: 200px;
-      align-items: start;
+      display: flex;
+      width: 65%;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      overflow-y: auto;
     }
     
     video {
-      width: 100%;
-      height: 100%;
-      max-width: 100%;
+      display: block;
+      flex: 1;
+      width: 100px;
+      margin: 10px;
       object-fit: cover;
       border-radius: 10px;
-      padding: 5px;
+      max-width: 600px;
+      
     }
 
     #chat-grid{
       width:30%;
-      height: 90%;
+      height: 80%;
       display: flex;
       flex-direction: column;
+      margin: 10px;
     }
 
     #chat-contents{
       height:500px;
       border: 0.5px solid black;
+      background-color: aliceblue;
+      border-radius: 20px;
+      padding: 10px;
     }
 
     #form{
@@ -59,12 +72,17 @@
 
     #message-input{
       height: 30px;
-      width: 300px;
+      width: 350px;
+      background-color: aliceblue;
+      border-radius: 5px;
+      margin:2px;
     }
     
     #send-button{
       height: 30px;
-
+      background-color: aliceblue;
+      border-radius: 30px;
+      margin: 2px;
     }
   </style>
 </head>
@@ -73,15 +91,17 @@
   <div id="video-grid"></div>
   <div id="chat-grid">
     <div id="chat-container">
-      <h1>INBOX</h1>
+      <h5 style="color: aliceblue;">INBOX</h5>
       <div id="chat-contents">
+        <h5 style="color: grey; background-color: aliceblue;">Your messages will be diplayed here...</h5>
       </div>
     </div>
     <form id="form">
-      <label>Send Message</label>
       <div id="send-message"></div>
-        <input type="text" id="message-input"></input>
-        <button type="button" id="send-button">Send</button>
+        <input type="text" id="message-input" placeholder="Type your message here..."></input>
+        <button type="button" id="send-button">
+          <i class="fa fa-paper-plane-o" style="background-color: aliceblue; border-radius: 30px;"></i>
+        </button>
     </div>
     </form>
   </div>
