@@ -74,3 +74,5 @@ send.addEventListener('click',function(e){
   chatContents.append(div)
   socket.emit('send-message',10,message,ROOM_ID)
 })
+
+

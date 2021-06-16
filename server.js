@@ -26,8 +26,7 @@ app.get('/home/create',(req,res) => {
 
 io.on('connection', socket => {
   socket.on('send-message',(id,message,room) => {
-    console.log(message)
-    socket.to(room).emit('receive-message',id,message)
+    socket.to(room).broadcast.emit('receive-message',id,message)
   })
   socket.on('join-room', (roomId, userId) => {
     socket.join(roomId)
