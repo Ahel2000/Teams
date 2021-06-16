@@ -1,5 +1,8 @@
 const socket = io('/')
 const videoGrid = document.getElementById('video-grid')
+const chatContents = document.getElementById('chat-contents')
+const send = document.getElementById('send-button')
+//const currUser = "";
 const myPeer = new Peer(undefined, {
   host: '/',
   port: '3030'
@@ -23,6 +26,7 @@ navigator.mediaDevices.getUserMedia({
 
   socket.on('user-connected', userId => {
     setTimeout(connectToNewUser,1000,userId, stream)
+    currUser = userId
   })
 })
 
@@ -30,8 +34,15 @@ socket.on('user-disconnected', userId => {
   if (peers[userId]) peers[userId].close()
 })
 
+socket.on('receive-message',(userId,message) => {
+  const div = document.createElement('div')
+  div.textContent = userId + ": " + message
+  chatContents.append(div)
+})
+
 myPeer.on('open', id => {
   socket.emit('join-room', ROOM_ID, id)
+  
 })
 
 function connectToNewUser(userId, stream) {
@@ -54,3 +65,12 @@ function addVideoStream(video, stream) {
   })
   videoGrid.append(video)
 }
+
+send.addEventListener('click',function(e){
+  const message = document.getElementById('message-input').value
+  if(message === "")return
+  const div = document.createElement('div')
+  div.textContent = message
+  chatContents.append(div)
+  socket.emit('send-message',10,message,ROOM_ID)
+})
