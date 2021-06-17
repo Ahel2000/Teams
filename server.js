@@ -12,7 +12,7 @@ app.use('/peerjs', peerServer)
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
-app.get('/', (req, res) => {
+/*app.get('/', (req, res) => {
   res.redirect(`/${uuidV4()}`)
 })
 
@@ -22,6 +22,34 @@ app.get('/:room', (req, res) => {
 
 app.get('/home/create',(req,res) => {
   res.render('landing')
+})
+
+app.get('/home/create-meeting',(req,res) => {
+  res.render('create')
+})*/
+
+app.get('/', (req, res) => {
+  res.redirect('/home')
+})
+
+app.get('/home',(req,res) => {
+  res.render('landing')
+})
+
+app.get('/create-meeting',(req,res) => {
+  res.render('create')
+})
+
+app.get('/join-meeting',(req,res) => {
+  res.render('join')
+})
+
+app.get('/meeting',(req,res) => {
+  res.redirect(`/${uuidV4()}`)
+})
+
+app.get('/:room', (req, res) => {
+  res.render('room', { roomId: req.params.room })
 })
 
 io.on('connection', socket => {

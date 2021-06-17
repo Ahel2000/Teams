@@ -1,0 +1,28 @@
+#form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#set-name{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#name{
+    height: 30px;
+    width: 300px;
+    margin: 10px;
+}
+
+#submit{
+    width: 100px;
+    border-radius: 20px;
+    background-color: rgb(117, 117, 182);
+    color: aliceblue;
+    height: 30px;
+}
+
+

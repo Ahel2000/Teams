@@ -2,6 +2,7 @@ const socket = io('/')
 const videoGrid = document.getElementById('video-grid')
 const chatContents = document.getElementById('chat-contents')
 const send = document.getElementById('send-button')
+const lineBreak = document.createElement("br")
 //const currUser = "";
 const myPeer = new Peer(undefined, {
   host: '/',
@@ -37,8 +38,11 @@ socket.on('user-disconnected', userId => {
 socket.on('receive-message',(userId,message) => {
   const div = document.createElement('div')
   div.textContent = userId + ": " + message
-  div.style.background = '#ffffff'
+  div.style.background = '#808080'
+  div.style.borderRadius = '20px'
+  chatContents.append(lineBreak)
   chatContents.append(div)
+  chatContents.append(lineBreak)
 })
 
 myPeer.on('open', id => {
@@ -74,8 +78,11 @@ send.addEventListener('click',function(e){
   if(message === "")return
   const div = document.createElement('div')
   div.textContent = message
-  div.style.background = '#ffffff'
+  div.style.background = '#00FF00'
+  div.style.borderRadius = '20px'
+  chatContents.append(lineBreak)
   chatContents.append(div)
+  chatContents.append(lineBreak)
   socket.emit('send-message',10,message,ROOM_ID)
 })
 
