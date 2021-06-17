@@ -6,7 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link
       rel="stylesheet"
+      type="text/css"
       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     />
   <script>
     const ROOM_ID = "<%= roomId %>"
@@ -24,6 +29,8 @@
       height:80%;
       display: flex;
     }
+
+    
     
     #video-grid {
       display: flex;
@@ -72,7 +79,7 @@
 
     #message-input{
       height: 30px;
-      width: 350px;
+      width: 330px;
       background-color: aliceblue;
       border-radius: 5px;
       margin:2px;
@@ -84,11 +91,43 @@
       border-radius: 30px;
       margin: 2px;
     }
+
+    .control-panel-wrapper{
+      position: absolute;
+      bottom: 30px;
+      background-color: aliceblue;
+      display: flex;
+      justify-content: center;
+      width: 65%;
+      border-radius: 10px;
+    }
+
+    .control-panel{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 60px;
+      background-color: aliceblue;
+      margin: auto;
+    }
+
+    .control-elements{
+      display: flex;
+      flex-direction: column;
+      margin: auto;
+      border-radius: 30px;
+      background-color: gray;
+      margin-left: 20px;
+      margin-right: 20px;
+      align-items: center;
+    }
   </style>
 </head>
 <body>
   <div id="videopluschat">
+  
   <div id="video-grid"></div>
+  
   <div id="chat-grid">
     <div id="chat-container">
       <h5 style="color: aliceblue;">INBOX</h5>
@@ -100,10 +139,35 @@
       <div id="send-message"></div>
         <input type="text" id="message-input" placeholder="Type your message here..."></input>
         <button type="button" id="send-button">
-          <i class="fa fa-paper-plane-o" style="background-color: aliceblue; border-radius: 30px;"></i>
+          <i class="fa fa-paper-plane-o" style="background-color: aliceblue; border-radius: 30px; margin: 5px;"></i>
         </button>
     </div>
     </form>
+  </div>
+
+  <div class="control-panel-wrapper">
+    <div class="control-panel">
+      <div class="control-elements">
+        <i class="fa fa-users" style="color: red; background-color: aliceblue;"></i>
+        
+      </div>
+      <div class="control-elements">
+        <i class="fa fa-video-camera" style="color: red; background-color: aliceblue;"></i>
+        
+      </div>
+      <div class="control-elements">
+        <i class="fa fa-phone" style="color: red; background-color: aliceblue;"></i>
+        
+      </div>
+      <div class="control-elements">
+        <i class="fa fa-microphone" style="color: red; background-color: aliceblue;"></i>
+        
+      </div>
+      <div class="control-elements">
+        <i class="fa fa-upload" style="color: red; background-color: aliceblue;"></i>
+        
+      </div>
+    </div>
   </div>
 </div>
 </body>
