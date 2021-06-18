@@ -8,9 +8,9 @@ const vid = document.getElementById('element-2')
 
 //const currUser = "";
 const myPeer = new Peer(undefined, {
-  secure: 'true',
+  secure: true,
   host: 'stormy-brook-32763.herokuapp.com',
-  port: '3030'
+  port: 443
 })
 const myVideo = document.createElement('video')
 
