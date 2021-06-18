@@ -45,6 +45,7 @@ app.get('/join-meeting',(req,res) => {
 })
 
 app.get('/meeting',(req,res) => {
+  console.log(req.params)
   res.redirect(`/${uuidV4()}`)
 })
 

@@ -69,17 +69,18 @@
     }
 
     #form{
-      
+      width: 100%;
     }
 
     #send-message{
       display: flex;
       flex-direction: row;
+      width: 100%;
     }
 
     #message-input{
       height: 30px;
-      width: 330px;
+      width: 90%;
       background-color: aliceblue;
       border-radius: 5px;
       margin:2px;
@@ -87,6 +88,7 @@
     
     #send-button{
       height: 30px;
+      width: 10%;
       background-color: aliceblue;
       border-radius: 30px;
       margin: 2px;
@@ -136,10 +138,10 @@
       </div>
     </div>
     <form id="form">
-      <div id="send-message"></div>
+      <div id="send-message">
         <input type="text" id="message-input" placeholder="Type your message here..."></input>
         <button type="button" id="send-button">
-          <i class="fa fa-paper-plane-o" style="background-color: aliceblue; border-radius: 30px; margin: 5px;"></i>
+          <i class="fa fa-paper-plane-o" style="background-color: aliceblue;"></i>
         </button>
     </div>
     </form>
@@ -147,23 +149,23 @@
 
   <div class="control-panel-wrapper">
     <div class="control-panel">
-      <div class="control-elements">
-        <i class="fa fa-users" style="color: red; background-color: aliceblue;"></i>
-        
+      <div class="control-elements" id="element-1">
+        <i class="fa fa-users" style="color: red; background-color: aliceblue;">
+        </i>
       </div>
-      <div class="control-elements">
+      <div class="control-elements" id="element-2">
         <i class="fa fa-video-camera" style="color: red; background-color: aliceblue;"></i>
         
       </div>
-      <div class="control-elements">
+      <div class="control-elements" id="element-3">
         <i class="fa fa-phone" style="color: red; background-color: aliceblue;"></i>
         
       </div>
-      <div class="control-elements">
+      <div class="control-elements" id="element-4">
         <i class="fa fa-microphone" style="color: red; background-color: aliceblue;"></i>
         
       </div>
-      <div class="control-elements">
+      <div class="control-elements" id="element-5">
         <i class="fa fa-upload" style="color: red; background-color: aliceblue;"></i>
         
       </div>
