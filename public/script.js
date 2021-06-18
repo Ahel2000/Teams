@@ -17,6 +17,7 @@ let myVideoStream;
 
 //USER SHOULD NOT LISTEN TO HIS OWN VOICE
 //ELSE WOULD CAUSE ECHO
+//SO USER'S OWN VIDEO IS MUTED
 myVideo.muted = true
 const peers = {}
 navigator.mediaDevices.getUserMedia({
