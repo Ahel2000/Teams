@@ -10,7 +10,8 @@ const vid = document.getElementById('element-2')
 const myPeer = new Peer(undefined, {
   secure: true,
   host: 'stormy-brook-32763.herokuapp.com',
-  port: 443
+  port: 443,
+  path: '/peerjs'
 })
 const myVideo = document.createElement('video')
 
