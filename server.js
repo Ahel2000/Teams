@@ -33,6 +33,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/home',(req,res) => {
+  console.log(req.params)
   res.render('landing')
 })
 
@@ -50,6 +51,7 @@ app.get('/meeting',(req,res) => {
 })
 
 app.get('/:room', (req, res) => {
+  console.log(req.params[0])
   res.render('room', { roomId: req.params.room })
 })
 

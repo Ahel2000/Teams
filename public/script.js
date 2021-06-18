@@ -4,6 +4,7 @@ const chatContents = document.getElementById('chat-contents')
 const send = document.getElementById('send-button')
 const lineBreak = document.createElement("br")
 const mic = document.getElementById('element-4')
+const vid = document.getElementById('element-2')
 
 //const currUser = "";
 const myPeer = new Peer(undefined, {
@@ -94,6 +95,13 @@ function addVideoStream(video, stream) {
   
 }
 
+/*
+
+The next few lines of code contain the code snippets 
+that are used to change the audio settings during a conference
+
+*/
+
 //MUTE OR UNMUTE THE MIC
 function muteUnmute(){
   const enabled = myVideoStream.getAudioTracks()[0].enabled
@@ -118,6 +126,48 @@ function setMuteButton(){
   document.getElementById("element-4").innerHTML = html;
 }
 
+
+/*
+
+The next few lines of codes contain the code snippets
+that are used to change video settings during the conference
+
+*/
+
+//FUNCTION TO SWITCH VIDEO ON OR OFF
+function videoOnOff(){
+  const enabled = myVideoStream.getVideoTracks()[0].enabled
+  if (enabled) {
+    myVideoStream.getVideoTracks()[0].enabled = false
+    unsetVideoButton()
+  } else {
+    myVideoStream.getVideoTracks()[0].enabled = true
+    setVideoButton()
+  }
+}
+
+//CHANGES VIDEO ICON TO PAUSED ICON
+function setVideoButton(){
+  const html = `<i class="unmute fa fa-video-camera" style="color: red; background-color: aliceblue;"></i>`;
+  document.getElementById("element-2").innerHTML = html;
+}
+
+//CHANGES PAUSED ICON TO VIDEO ICON
+function unsetVideoButton(){
+  const html = `<i class="unmute fa fa-pause-circle" style="color: red; background-color: aliceblue;"></i>`;
+  document.getElementById("element-2").innerHTML = html;
+}
+
+
+
+/* 
+
+The next few lines OF code contain the code snippets 
+that listen to button clicks and icon clicks
+
+*/
+
+
 //LISTENS TO BUTTON CLICK WHILE SENDING MESSAGES
 send.addEventListener('click',function(e){
   const message = document.getElementById('message-input').value
@@ -135,6 +185,10 @@ send.addEventListener('click',function(e){
 //LISTENS TO BUTTON CLICK THAT MUTES OR UNMUTES THE MIC
 mic.addEventListener('click',function(e){
   muteUnmute()
+})
+
+vid.addEventListener('click', function(e){
+  videoOnOff()
 })
 
 
