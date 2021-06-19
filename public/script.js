@@ -7,12 +7,18 @@ const mic = document.getElementById('element-4')
 const vid = document.getElementById('element-2')
 
 //const currUser = "";
-const myPeer = new Peer(undefined, {
+/*const myPeer = new Peer(undefined, {
   secure: true,
   host: 'stormy-brook-32763.herokuapp.com',
   port: 443,
   path: '/peerjs'
+})*/
+
+const myPeer = new Peer(undefined, {
+  host: '/',
+  port: 3030
 })
+
 const myVideo = document.createElement('video')
 
 let myVideoStream;
@@ -107,6 +113,7 @@ that are used to change the audio settings during a conference
 
 //MUTE OR UNMUTE THE MIC
 function muteUnmute(){
+  console.log(myVideoStream)
   const enabled = myVideoStream.getAudioTracks()[0].enabled
   if (enabled) {
     myVideoStream.getAudioTracks()[0].enabled = false
