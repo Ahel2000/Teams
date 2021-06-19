@@ -7,21 +7,22 @@ const mic = document.getElementById('element-4')
 const vid = document.getElementById('element-2')
 
 //const currUser = "";
-const myPeer = new Peer(undefined, {
+/*const myPeer = new Peer(undefined, {
   secure: true,
   host: 'stormy-brook-32763.herokuapp.com',
   port: 443,
   path: '/peerjs'
-})
+})*/
 
-/*const myPeer = new Peer(undefined, {
+const myPeer = new Peer(undefined, {
   host: '/',
   port: 3030
-})*/
+})
 
 const myVideo = document.createElement('video')
 
 let myVideoStream;
+let myId;
 
 //USER SHOULD NOT LISTEN TO HIS OWN VOICE
 //ELSE WOULD CAUSE ECHO
@@ -45,8 +46,8 @@ navigator.mediaDevices.getUserMedia({
     })
   })
 
-  //SEND DOWN VIDEO STREAM OF CURRENT USER
-  //WHEN HE GETS CONNECTED TO THE CALL
+  //TRIGGERED WHEN A NEW USER CONNECTS
+  //WE SEND DOWN THE USERID TO THIS EVENT
   socket.on('user-connected', userId => {
     setTimeout(connectToNewUser,1000,userId, stream)
   })
@@ -68,18 +69,27 @@ socket.on('receive-message',(userId,message) => {
   chatContents.append(lineBreak)
 })
 
+
 //ON ESTABLISHING CONNECTION,
 //THE USER IS MADE TO JOIN THE ROOM
 myPeer.on('open', id => {
   socket.emit('join-room', ROOM_ID, id)
-  
+  myId = id;
 })
+
 
 //ADD THE VIDEO OF THE NEW USER
 //TO THE SCREEN OF ALL OTHER USERS
 function connectToNewUser(userId, stream) {
+  //This calls the newly connected user
+  //and sends down my video stream
   const call = myPeer.call(userId, stream)
+
+
   const video = document.createElement('video')
+
+  //This receives the other users' video stream
+  //and appends to my video screen
   call.on('stream', userVideoStream => {
     addVideoStream(video, userVideoStream)
   })
@@ -114,6 +124,7 @@ that are used to change the audio settings during a conference
 //MUTE OR UNMUTE THE MIC
 function muteUnmute(){
   console.log(myVideoStream)
+  console.log(myVideoStream.getAudioTracks())
   const enabled = myVideoStream.getAudioTracks()[0].enabled
   if (enabled) {
     myVideoStream.getAudioTracks()[0].enabled = false
@@ -164,7 +175,7 @@ function setVideoButton(){
 
 //CHANGES PAUSED ICON TO VIDEO ICON
 function unsetVideoButton(){
-  const html = `<i class="unmute fa fa-pause-circle" style="color: red; background-color: aliceblue;"></i>`;
+  const html = `<i class="unmute fa fa-play" style="color: red; background-color: aliceblue;"></i>`;
   document.getElementById("element-2").innerHTML = html;
 }
 
