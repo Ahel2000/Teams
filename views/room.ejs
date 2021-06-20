@@ -22,7 +22,7 @@
   <title>Teams</title>
   <style>
     *{
-      background-color: black;
+      background-color: gray;
     }
     #videopluschat{
       width:100%;
@@ -62,36 +62,47 @@
 
     #chat-contents{
       height:400px;
-      border: 0.5px solid black;
-      background-color: aliceblue;
-      border-radius: 10px;
+      background-color: grey;
+      border-radius: 20px;
       padding: 10px;
+      margin-bottom: 5px;
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     }
 
     #form{
       width: 100%;
     }
 
+    ::placeholder{
+      color: #A9A9A9;
+      opacity: 1;
+    }
+
+    input{
+      caret-color: aliceblue;
+      cursor: url('/assets/icons8-cursor.svg');
+    }
+
     #send-message{
+      height: 40px;
       display: flex;
       flex-direction: row;
       width: 100%;
+      background-color: grey;
     }
 
     #message-input{
-      height: 30px;
       width: 90%;
       background-color: aliceblue;
       border-radius: 5px;
-      margin:2px;
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     }
     
     #send-button{
-      height: 30px;
       width: 10%;
-      background-color: aliceblue;
+      background-color: black;
       border-radius: 30px;
-      margin: 2px;
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     }
 
     .control-panel-wrapper{
@@ -117,16 +128,16 @@
     .control-elements{
       display: flex;
       flex-direction: column;
-      margin: auto;
-      border: 1px solid red;
       padding: 5px;
+      border: 1px solid red;
       border-radius: 30px;
       background-color: aliceblue;
       margin-left: 20px;
       margin-right: 20px;
-      height: 15px;
-      width: 15px;
+      height: 20px;
+      width: 20px;
       align-items: center;
+      text-align: center;
     }
   </style>
 </head>
@@ -137,16 +148,16 @@
   
   <div id="chat-grid">
     <div id="chat-container">
-      <h5 style="color: aliceblue;">INBOX</h5>
+      <h5 style="color: #A9A9A9; text-align: center;">INBOX</h5>
       <div id="chat-contents">
-        <h5 style="color: grey; background-color: aliceblue;">Your messages will be diplayed here...</h5>
+        <h5 style="color: #A9A9A9; text-align: center;">Your messages will be diplayed here...</h5>
       </div>
     </div>
     <form id="form">
       <div id="send-message">
-        <input type="text" id="message-input" placeholder="Type your message here..."></input>
+        <input type="text" id="message-input" placeholder="Type your message here..." style="color: #A9A9A9;"></input>
         <button type="button" id="send-button">
-          <i class="fa fa-paper-plane-o" style="background-color: aliceblue;"></i>
+          <i class="fa fa-paper-plane-o" style="background-color: black; color: aliceblue"></i>
         </button>
     </div>
     </form>

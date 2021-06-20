@@ -61,8 +61,7 @@ socket.on('user-disconnected', userId => {
 //THE USER RECEIVES A MESSAGE
 socket.on('receive-message',(userId,message) => {
   const div = document.createElement('div')
-  div.textContent = userId + ": " + message
-  div.style.background = '#808080'
+  div.textContent = "Anonymous(9:40) : " + message
   div.style.borderRadius = '20px'
   chatContents.append(lineBreak)
   chatContents.append(div)
@@ -194,9 +193,9 @@ send.addEventListener('click',function(e){
   const message = document.getElementById('message-input').value
   if(message === "")return
   const div = document.createElement('div')
-  div.textContent = message
-  div.style.background = '#00FF00'
+  div.textContent = "You(9:40) : " + message
   div.style.borderRadius = '20px'
+  div.style.color = '#fff'
   chatContents.append(lineBreak)
   chatContents.append(div)
   chatContents.append(lineBreak)
