@@ -6,16 +6,7 @@ const { v4: uuidV4 } = require('uuid')
 const { ExpressPeerServer } = require("peer")
 const peerServer = ExpressPeerServer(server, {
   debug: true,
-  config: {
-    'iceServers' : [{urls : "stun:stun.stunprotocol.org"
-          },
-          {
-            urls: 'turn:numb.viagenie.ca',
-          credential: 'Ahel@2000',
-          username : 'aheldc@gmail.com'
-        },
-      ]
-  }
+  
 })
 
 app.use('/peerjs', peerServer)
