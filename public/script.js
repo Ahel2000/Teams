@@ -7,17 +7,17 @@ const mic = document.getElementById('element-4')
 const vid = document.getElementById('element-2')
 
 //const currUser = "";
-const myPeer = new Peer(undefined, {
+/*const myPeer = new Peer(undefined, {
   secure: true,
   host: 'stormy-brook-32763.herokuapp.com',
   port: 443,
   path: '/peerjs'
-})
+})*/
 
-/*const myPeer = new Peer(undefined, {
+const myPeer = new Peer(undefined, {
   host: '/',
   port: 3030
-})*/
+})
 
 const myVideo = document.createElement('video')
 

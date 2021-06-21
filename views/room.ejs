@@ -89,6 +89,7 @@
       flex-direction: row;
       width: 100%;
       background-color: grey;
+      border-radius: 30px;
     }
 
     #message-input{
@@ -112,6 +113,7 @@
       display: flex;
       justify-content: center;
       width: 100%;
+      height: 80px;
       left: 0px;
       right: 0px;
     }
@@ -120,15 +122,13 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 60px;
       background-color: aliceblue;
-      margin: auto;
     }
 
     .control-elements{
       display: flex;
       flex-direction: column;
-      padding: 5px;
+      padding: 10px;
       border: 1px solid red;
       border-radius: 30px;
       background-color: aliceblue;
@@ -138,7 +138,17 @@
       width: 20px;
       align-items: center;
       text-align: center;
+      margin-top: 2px;
     }
+
+    .control-elements:hover{
+      height: 30px;
+      width: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
   </style>
 </head>
 <body>
@@ -149,8 +159,13 @@
   <div id="chat-grid">
     <div id="chat-container">
       <h5 style="color: #A9A9A9; text-align: center;">INBOX</h5>
+
       <div id="chat-contents">
+        <div style="background-color: gray; display:flex; justify-content: center; align-items: center;">
+          <img src="/assets/rocket.jpg" alt="" width="50" height="50">
+        </div>
         <h5 style="color: #A9A9A9; text-align: center;">Your messages will be diplayed here...</h5>
+        <div style="background-color: #A9A9A9; height: 1px; width: 100%"></div>
       </div>
     </div>
     <form id="form">
