@@ -11,7 +11,17 @@ const myPeer = new Peer(undefined, {
   secure: true,
   host: 'stormy-brook-32763.herokuapp.com',
   port: 443,
-  path: '/peerjs'
+  path: '/peerjs',
+  config: {
+    'iceServers' : [{urls : "stun:stun.stunprotocol.org"
+          },
+          {
+            urls: 'turn:numb.viagenie.ca',
+          credential: 'Ahel@2000',
+          username : 'aheldc@gmail.com'
+        },
+      ]
+  }
 })
 
 /*const myPeer = new Peer(undefined, {
