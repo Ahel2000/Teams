@@ -6,7 +6,9 @@ const lineBreak = document.createElement("br")
 const mic = document.getElementById('element-4')
 const vid = document.getElementById('element-2')
 
-//const currUser = "";
+//Added TURN and STUN server configuration for
+//fixing connectivity issue over different wifi networks
+//But does this really work?
 const myPeer = new Peer(undefined, {
   secure: true,
   host: 'stormy-brook-32763.herokuapp.com',
