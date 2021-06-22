@@ -6,10 +6,11 @@ const lineBreak = document.createElement("br")
 const mic = document.getElementById('element-4')
 const vid = document.getElementById('element-2')
 
+
 //Added TURN and STUN server configuration for
 //fixing connectivity issue over different wifi networks
 //But does this really work?
-const myPeer = new Peer(undefined, {
+/*const myPeer = new Peer(undefined, {
   secure: true,
   host: 'stormy-brook-32763.herokuapp.com',
   port: 443,
@@ -24,13 +25,31 @@ const myPeer = new Peer(undefined, {
         },
       ]
   }
-})
-
-/*const myPeer = new Peer(undefined, {
-  host: '/',
-  port: 3030
 })*/
 
+const myPeer = new Peer(undefined, {
+  host: '/',
+  port: 3030
+})
+
+var firebaseConfig = {
+  apiKey: "AIzaSyAZYrdWPPo3xwJ8MrKQxDreCO6BbN5RSqs",
+  authDomain: "teamsclonesite.firebaseapp.com",
+  projectId: "teamsclonesite",
+  storageBucket: "teamsclonesite.appspot.com",
+  messagingSenderId: "292225232182",
+  appId: "1:292225232182:web:0b58800c63f20865875797"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+var flag = 0;
+//getData()
+
+
+console.log("After function")  
+//if(flag === 0)window.location.href ="/create-meeting"
 const myVideo = document.createElement('video')
 
 let myVideoStream;
@@ -66,7 +85,8 @@ navigator.mediaDevices.getUserMedia({
 })
 
 socket.on('user-disconnected', userId => {
-  if (peers[userId]) peers[userId].close()
+  //if (peers[userId]) 
+  peers[userId].close()
 })
 
 //THIS IS TRIGGERED WHEN
@@ -96,6 +116,7 @@ function connectToNewUser(userId, stream) {
   //and sends down my video stream
   const call = myPeer.call(userId, stream)
 
+  console.log(call)
 
   const video = document.createElement('video')
 
@@ -124,6 +145,23 @@ function addVideoStream(video, stream) {
   let totalUsers = document.getElementsByTagName("video").length;
   
 }
+
+
+db.collection('meetings').get().then((querySnapshop) => {
+  querySnapshop.forEach((doc)=>{
+    const meetingId = doc.data().meetingId;
+    console.log(meetingId)
+    if(meetingId == ROOM_ID){
+      flag = 1;
+    }
+  })
+})
+
+setTimeout(function(){
+  if(flag == 0)window.location.href ="/home/404"
+  console.log("flag:",flag)
+},3000);
+
 
 /*
 
@@ -194,7 +232,7 @@ function unsetVideoButton(){
 
 /* 
 
-The next few lines OF code contain the code snippets 
+The next few lines of code contain the code snippets 
 that listen to button clicks and icon clicks
 
 */
@@ -212,6 +250,7 @@ send.addEventListener('click',function(e){
   chatContents.append(div)
   chatContents.append(lineBreak)
   socket.emit('send-message',10,message,ROOM_ID)
+  document.getElementById('message-input').value = '';
 })
 
 //LISTENS TO BUTTON CLICK THAT MUTES OR UNMUTES THE MIC

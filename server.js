@@ -38,6 +38,18 @@ app.get('/home/create-meeting',(req,res) => {
   res.render('create')
 })*/
 
+const admin = require('firebase-admin');
+
+
+const serviceAccount = require('./public/firebase/firebaseService.json');
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
+
+const db = admin.firestore();
+const doc = db.collection('meetings');
+
 app.get('/', (req, res) => {
   res.redirect('/home')
 })
@@ -55,11 +67,21 @@ app.get('/join-meeting',(req,res) => {
 })
 
 app.get('/meeting',(req,res) => {
-  res.redirect(`/${uuidV4()}`)
+  const room = uuidV4()
+  doc.add({
+    meetingId: room
+  })
+
+  res.redirect(`/${room}`)
 })
 
 app.get('/:room', (req, res) => {
-  res.render('room', { roomId: req.params.room })
+  
+  res.render('room', { roomId: req.params.room})
+})
+
+app.get('/home/404',(req,res) => {
+  res.render('404')
 })
 
 io.on('connection', socket => {
@@ -76,4 +98,6 @@ io.on('connection', socket => {
   })
 })
 
-server.listen(process.env.PORT || 3000)
+server.listen(process.env.PORT || 3000, ()=>{
+  console.log('Listening in port 3000...')
+})

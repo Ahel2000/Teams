@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "teamsclonesite",
+  "private_key_id": "92dcdab2b2c2de3da6343076c4f3e363df404613",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCQJ/eQ3gGcfPXu\nykSn4eQdIx2XxyD30fov9YnIMQIWx7Q7Hm5AGeG0FiBqBxSZGPmFi64C1jSZ1Mj6\nvVhChVhprNOResl8vDlFdYvNJt0JiehGfqXRe3ufMAKtH0Z4A9ZSu8M19WHTIfcu\nJ0pQlUX+VfbxnFjXgnMVWzOlyF9+MAOnwAF13Bf8hs2yOZc29l9lKit8nc2lGcNx\nu2b65Bw2drxTVjZzu3oZpcz24w7KrG/5G29vl8Y+yqWtndD1imY9Q4ZsI3gxbUUx\nHFwRdKLwq6LHq6zZZ68cjJYZ5BlKjoR/iEGvt0+vAXOpsbfVOmw5VQfzhS5WZItK\nzwXQ1K6tAgMBAAECggEAOCjR2gabMxc9ijsTdyHaB/3jq/sAHXuYj7GE7VAmY7CG\nRtfKlL9gfhN2qke63w/rOXsanfFMSberWn+EUFn5gSW6wHzI3QbI+wXZomEnEG3A\n5yG0wMDt/qyqBj7eaaf5CX8rhCxl4WZkkP7uhSk6POTJkQPbWo3v/pxqqQXAKfy9\nyPfk5XjcaA/vf3XztYimggidtQoXXOBqNGy0HWU/pFQGNb1Ih45ZHAdT+7oacHz5\n+uY/wv8lxCB66ayA1zhQrzkmfMZRjujKfwWNtxyY+KU9k2NbpkkMHhVMAeNqDpR1\njWefvdlIXQ86QxdyArn5fh6y+Qstl3sNO28rCTj6AwKBgQDIOR3qyhRbpZH8n41V\npoTCp/cYdqfxFkyOsFTFDZH7vqbzFtRhvQ/3fTXu24F/q1ItEy+qjmCDa6fYtH4o\nEWkL/FhkuP2TgyEbCNSQxAxDLhT3mO3BO/ebttrAfvJeJm4zsm5sicmMZJ0Y078B\nTzmyMOw2oliDUpHXCCpTt9bUDwKBgQC4UHDJufnCwfL9v58DlBmYqUuFtq9vIBUh\n+hGGPznxFeDBkC0U2g5NilGyXo9a3eIcMiCp+vXtuCLgH3JyM9toBmng8TiXCSrL\n3KXHPB5KPXcY1GabOnxuB0hr4rEopjGw2DLnOg/45o8YkfqpyaOTQ17Lfnv1dmnK\nkfYp+sAlgwKBgATwq9VMMR5lwmlaQnF3j1UCMe2Pl+sx4qeuoBjQkeaFOLdMu+bB\ndHBlzXvcPKC6yGdGTunFY4o6kMSfB3HTpCTgkAnEKrWGCb4SBLShsa/Cpk/JnSwk\nX6Ke61zOhQpfpl5uK51P9QIaxWmEZ/UPUFweKuXaMZbj5adJk0nHgmxvAoGAZrad\nRC3Z3AkNiw9AZFQiN4sQxUFbXsg4PqkHHxMZDRsuF3BrTxV9pwSQJqC/rtm76g6d\nWVy7tHBLLy8XLkFr4frBAlQrPzAio10hHXiJQMIkHrgvPg5HzWFNoKHCLG8BfhXd\nuDIJOKHz2LNxRzFRcP24VBr2pYIJzpOs5RQSBFUCgYEAwJTBpy0LnAJRKC2lGncV\nvklrgWClJOP5AQkzqfEjazdFXqxImx/g2143DLitEcFC3v+w5dhwDIqVCkfB9QNb\nvxnS95ryxhZSitrAi6sO1thd+R2HVhbxEiJSAcO2ltJhV5i8h+1vvVRdvOnCjfNX\njFWwsIWEYpUDHHDLvxOz8r0=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-khmtv@teamsclonesite.iam.gserviceaccount.com",
+  "client_id": "109735097883822324030",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-khmtv%40teamsclonesite.iam.gserviceaccount.com"
+}
