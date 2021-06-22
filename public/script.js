@@ -10,7 +10,7 @@ const vid = document.getElementById('element-2')
 //Added TURN and STUN server configuration for
 //fixing connectivity issue over different wifi networks
 //But does this really work?
-/*const myPeer = new Peer(undefined, {
+const myPeer = new Peer(undefined, {
   secure: true,
   host: 'stormy-brook-32763.herokuapp.com',
   port: 443,
@@ -25,12 +25,12 @@ const vid = document.getElementById('element-2')
         },
       ]
   }
-})*/
+})
 
-const myPeer = new Peer(undefined, {
+/*const myPeer = new Peer(undefined, {
   host: '/',
   port: 3030
-})
+})*/
 
 var firebaseConfig = {
   apiKey: "AIzaSyAZYrdWPPo3xwJ8MrKQxDreCO6BbN5RSqs",
@@ -146,6 +146,14 @@ function addVideoStream(video, stream) {
   
 }
 
+
+/*
+
+The next few lines of code stops users from creating their own meeting ids
+Checks if meeting id user wrote is present in database or not
+If not present, redirects to 404 not found page
+
+*/
 
 db.collection('meetings').get().then((querySnapshop) => {
   querySnapshop.forEach((doc)=>{
