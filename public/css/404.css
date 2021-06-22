@@ -1,0 +1,12 @@
+h1{
+    text-align: center;
+    color: blue;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.error{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
