@@ -5,12 +5,13 @@ const send = document.getElementById('send-button')
 const lineBreak = document.createElement("br")
 const mic = document.getElementById('element-4')
 const vid = document.getElementById('element-2')
+const input = document.getElementById('message-input')
 
 
 //Added TURN and STUN server configuration for
 //fixing connectivity issue over different wifi networks
 //But does this really work?
-const myPeer = new Peer(undefined, {
+/*const myPeer = new Peer(undefined, {
   secure: true,
   host: 'stormy-brook-32763.herokuapp.com',
   port: 443,
@@ -25,12 +26,12 @@ const myPeer = new Peer(undefined, {
         },
       ]
   }
-})
+})*/
 
-/*const myPeer = new Peer(undefined, {
+const myPeer = new Peer(undefined, {
   host: '/',
   port: 3030
-})*/
+})
 
 var firebaseConfig = {
   apiKey: "AIzaSyAZYrdWPPo3xwJ8MrKQxDreCO6BbN5RSqs",
@@ -244,6 +245,24 @@ The next few lines of code contain the code snippets
 that listen to button clicks and icon clicks
 
 */
+
+//PREVENT PAGE REFRESH ON PRESSING ENTER WITHIN INPUT BOX
+input.addEventListener('keypress',function(e){
+  if(e.keyCode == 13){
+    e.preventDefault()
+    const message = document.getElementById('message-input').value
+    if(message === "")return
+    const div = document.createElement('div')
+    div.textContent = "You(9:40) : " + message
+    div.style.borderRadius = '20px'
+    div.style.color = '#fff'
+    chatContents.append(lineBreak)
+    chatContents.append(div)
+    chatContents.append(lineBreak)
+    socket.emit('send-message',10,message,ROOM_ID)
+    document.getElementById('message-input').value = '';
+  }
+})
 
 
 //LISTENS TO BUTTON CLICK WHILE SENDING MESSAGES
