@@ -11,7 +11,7 @@ const input = document.getElementById('message-input')
 //Added TURN and STUN server configuration for
 //fixing connectivity issue over different wifi networks
 //But does this really work?
-/*const myPeer = new Peer(undefined, {
+const myPeer = new Peer(undefined, {
   secure: true,
   host: 'stormy-brook-32763.herokuapp.com',
   port: 443,
@@ -26,12 +26,12 @@ const input = document.getElementById('message-input')
         },
       ]
   }
-})*/
+})
 
-const myPeer = new Peer(undefined, {
+/*const myPeer = new Peer(undefined, {
   host: '/',
   port: 3030
-})
+})*/
 
 var firebaseConfig = {
   apiKey: "AIzaSyAZYrdWPPo3xwJ8MrKQxDreCO6BbN5RSqs",
@@ -250,7 +250,30 @@ that listen to button clicks and icon clicks
 input.addEventListener('keypress',function(e){
   if(e.keyCode == 13){
     e.preventDefault()
-    const message = document.getElementById('message-input').value
+    sendMessage()
+  }
+})
+
+
+//LISTENS TO BUTTON CLICK WHILE SENDING MESSAGES
+send.addEventListener('click',function(e){
+  const message = document.getElementById('message-input').value
+  if(message === "")return
+  sendMessage()
+})
+
+//LISTENS TO BUTTON CLICK THAT MUTES OR UNMUTES THE MIC
+mic.addEventListener('click',function(e){
+  muteUnmute()
+})
+
+//LISTENS TO BUTTON CLICK THAT SWITCHES VIDEO ON OR OFF
+vid.addEventListener('click', function(e){
+  videoOnOff()
+})
+
+function sendMessage(){
+  const message = document.getElementById('message-input').value
     if(message === "")return
     const div = document.createElement('div')
     div.textContent = "You(9:40) : " + message
@@ -261,32 +284,6 @@ input.addEventListener('keypress',function(e){
     chatContents.append(lineBreak)
     socket.emit('send-message',10,message,ROOM_ID)
     document.getElementById('message-input').value = '';
-  }
-})
-
-
-//LISTENS TO BUTTON CLICK WHILE SENDING MESSAGES
-send.addEventListener('click',function(e){
-  const message = document.getElementById('message-input').value
-  if(message === "")return
-  const div = document.createElement('div')
-  div.textContent = "You(9:40) : " + message
-  div.style.borderRadius = '20px'
-  div.style.color = '#fff'
-  chatContents.append(lineBreak)
-  chatContents.append(div)
-  chatContents.append(lineBreak)
-  socket.emit('send-message',10,message,ROOM_ID)
-  document.getElementById('message-input').value = '';
-})
-
-//LISTENS TO BUTTON CLICK THAT MUTES OR UNMUTES THE MIC
-mic.addEventListener('click',function(e){
-  muteUnmute()
-})
-
-vid.addEventListener('click', function(e){
-  videoOnOff()
-})
+}
 
 
