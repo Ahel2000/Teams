@@ -61,6 +61,13 @@ let myId;
 //SO USER'S OWN VIDEO IS MUTED
 myVideo.muted = true
 const peers = {}
+
+var getUserMedia =
+  navigator.getUserMedia ||
+  navigator.webkitGetUserMedia ||
+  navigator.mozGetUserMedia;
+
+  
 navigator.mediaDevices.getUserMedia({
   video: true,
   audio: true
