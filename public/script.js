@@ -6,6 +6,7 @@ const lineBreak = document.createElement("br")
 const mic = document.getElementById('element-4')
 const vid = document.getElementById('element-2')
 const input = document.getElementById('message-input')
+const share = document.getElementById('element-5')
 
 
 //Added TURN and STUN server configuration for
@@ -33,6 +34,8 @@ const myPeer = new Peer(undefined, {
   port: 3030
 })*/
 
+
+
 var firebaseConfig = {
   apiKey: "AIzaSyAZYrdWPPo3xwJ8MrKQxDreCO6BbN5RSqs",
   authDomain: "teamsclonesite.firebaseapp.com",
@@ -55,6 +58,7 @@ const myVideo = document.createElement('video')
 
 let myVideoStream;
 let myId;
+let currentPeer
 
 //USER SHOULD NOT LISTEN TO HIS OWN VOICE
 //ELSE WOULD CAUSE ECHO
@@ -67,7 +71,7 @@ var getUserMedia =
   navigator.webkitGetUserMedia ||
   navigator.mozGetUserMedia;
 
-  
+
 navigator.mediaDevices.getUserMedia({
   video: true,
   audio: true
@@ -82,6 +86,7 @@ navigator.mediaDevices.getUserMedia({
     const video = document.createElement('video')
     call.on('stream', userVideoStream => {
       addVideoStream(video, userVideoStream)
+      currentPeer = call.peerConnection
     })
   })
 
@@ -181,7 +186,45 @@ setTimeout(function(){
 
 /*
 
-The next few lines of code contain the code snippets 
+The next few lines of code contain the snippets
+that are used to share the screen
+
+*/
+
+//FUNCTION INVOKED WHEN SHARE SCREEN ICON IS PRESSED
+async function shareScreen(){
+  console.log(myPeer._connections.entries())
+  await navigator.mediaDevices.getDisplayMedia().then(stream => {
+    for(let [key,value] of myPeer._connections.entries()){
+      console.log(myPeer._connections.get(key))
+      myPeer._connections.get(key)[0]
+      .peerConnection.getSenders()[1]
+      .replaceTrack(stream.getTracks()[0])
+    }
+
+    //WHEN SCREEN SHARE IS STOPPED
+    stream.getTracks()[0].onended = async function(){
+      await navigator.mediaDevices.getUserMedia({
+        video: true,
+        audio: true
+      }).then(stream => {
+        for(let [key,value] of myPeer._connections.entries()){
+        console.log(myPeer._connections.get(key))
+        myPeer._connections.get(key)[0]
+        .peerConnection.getSenders()[1]
+        .replaceTrack(myVideoStream.getTracks()[1])
+      }
+      })
+      
+    }
+    
+  })
+}
+
+
+
+
+/*The next few lines of code contain the code snippets 
 that are used to change the audio settings during a conference
 
 */
@@ -279,6 +322,12 @@ vid.addEventListener('click', function(e){
   videoOnOff()
 })
 
+//LISTENS TO BUTTON CLICK THAT SHARES SCREEN
+share.addEventListener('click',function(e){
+  shareScreen()
+})
+
+//triggers the send-message event
 function sendMessage(){
   const message = document.getElementById('message-input').value
     if(message === "")return
