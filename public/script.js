@@ -34,7 +34,8 @@ const myPeer = new Peer(undefined, {
   port: 3030
 })*/
 
-
+var user = window.sessionStorage.getItem('Name')
+if(user === null)user = 'Anonymous'
 
 var firebaseConfig = {
   apiKey: "AIzaSyAZYrdWPPo3xwJ8MrKQxDreCO6BbN5RSqs",
@@ -106,7 +107,7 @@ socket.on('user-disconnected', userId => {
 //THE USER RECEIVES A MESSAGE
 socket.on('receive-message',(userId,message) => {
   const div = document.createElement('div')
-  div.textContent = "Anonymous(9:40) : " + message
+  div.textContent = message
   div.style.borderRadius = '20px'
   chatContents.append(lineBreak)
   chatContents.append(div)
@@ -338,7 +339,7 @@ function sendMessage(){
     chatContents.append(lineBreak)
     chatContents.append(div)
     chatContents.append(lineBreak)
-    socket.emit('send-message',10,message,ROOM_ID)
+    socket.emit('send-message',10,user + ":" + message,ROOM_ID)
     document.getElementById('message-input').value = '';
 }
 
