@@ -34,6 +34,7 @@ const myPeer = new Peer(undefined, {
   port: 3030
 })*/
 
+//retrieves the user name with which user joined from previous page
 var user = window.sessionStorage.getItem('Name')
 if(user === null)user = 'Anonymous'
 
