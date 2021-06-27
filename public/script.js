@@ -57,6 +57,7 @@ var flag = 0;
 console.log("After function")  
 //if(flag === 0)window.location.href ="/create-meeting"
 const myVideo = document.createElement('video')
+myVideo.controls = true;
 
 let myVideoStream;
 let myId;
@@ -86,6 +87,7 @@ navigator.mediaDevices.getUserMedia({
   myPeer.on('call', call => {
     call.answer(stream)
     const video = document.createElement('video')
+    video.controls = true;
     call.on('stream', userVideoStream => {
       addVideoStream(video, userVideoStream)
       currentPeer = call.peerConnection
@@ -134,6 +136,7 @@ function connectToNewUser(userId, stream) {
   console.log(call)
 
   const video = document.createElement('video')
+  video.controls = true;
 
   //This receives the other users' video stream
   //and appends to my video screen
