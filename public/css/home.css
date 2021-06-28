@@ -28,6 +28,13 @@
     justify-content: center;
 }
 
+#logo:hover{
+    transform: scaleX(1.2);
+    transform: scaleY(1.2);
+    transform: rotateZ(360deg);
+    transition: 1s;
+}
+
 #button-wrapper{
     display:flex;
     justify-content: center;
@@ -49,6 +56,18 @@
     width: 200px;
     border-radius: 30px;
     color: aliceblue;
+}
+
+#create-meeting-button:hover{
+    background-color: blue;
+    transform: scaleX(1.2);
+    transform: scaleY(1.2);
+}
+
+#join-meeting-button:hover{
+    background-color: blue;
+    transform: scaleX(1.2);
+    transform: scaleY(1.2);
 }
 
 #gif{

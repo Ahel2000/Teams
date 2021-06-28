@@ -12,7 +12,7 @@ const share = document.getElementById('element-5')
 //Added TURN and STUN server configuration for
 //fixing connectivity issue over different wifi networks
 //But does this really work?
-const myPeer = new Peer(undefined, {
+/*const myPeer = new Peer(undefined, {
   secure: true,
   host: 'stormy-brook-32763.herokuapp.com',
   port: 443,
@@ -27,12 +27,12 @@ const myPeer = new Peer(undefined, {
         },
       ]
   }
-})
+})*/
 
-/*const myPeer = new Peer(undefined, {
+const myPeer = new Peer(undefined, {
   host: '/',
   port: 3030
-})*/
+})
 
 //retrieves the user name with which user joined from previous page
 var user = window.sessionStorage.getItem('Name')
