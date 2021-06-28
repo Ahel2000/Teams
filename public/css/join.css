@@ -37,4 +37,34 @@
     background: blue;
 }
 
+.animation-container{
+    display: flex;
+}
+
+#building{
+    position: absolute;
+    left: 20px;
+    bottom: 100px;
+}
+
+#cyclist{
+    position: absolute;
+    left: 230px;
+    bottom: 120px;
+    animation-name: drive;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+#office{
+    position: absolute;
+    right: 20px;
+    bottom: 100px;
+}
+
+@keyframes drive {
+    from{transform: translateX(0);}
+    to{transform: translateX(800px);}
+}
+
 
