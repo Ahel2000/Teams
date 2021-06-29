@@ -4,6 +4,8 @@ const server = require('http').Server(app)
 const io = require('socket.io')(server)
 const { v4: uuidV4 } = require('uuid')
 const { ExpressPeerServer } = require("peer")
+const nodemailer = require('nodemailer')
+
 const peerServer = ExpressPeerServer(server, {
   debug: true,
   config: {
@@ -37,6 +39,14 @@ app.get('/home/create',(req,res) => {
 app.get('/home/create-meeting',(req,res) => {
   res.render('create')
 })*/
+
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'aheldc@gmail.com',
+    pass: '****************************'
+  }
+});
 
 const admin = require('firebase-admin');
 
@@ -88,6 +98,30 @@ io.on('connection', socket => {
   socket.on('send-message',(id,message,room) => {
     socket.to(room).broadcast.emit('receive-message',id,message)
   })
+
+  socket.on('share-link',(mailId,user,roomId) => {
+    var mailOptions = {
+      from: 'aheldc@gmail.com',
+      to: mailId,
+      //to: 'saha@bluezeal.in',
+      subject: user + ' invited you to a Teams meeting',
+      html: `<p>Please visit <a href='https://stormy-brook-32763.herokuapp.com/join-meeting'>here</a> and enter the Meeting Id <b>${roomId}</b> when prompted.
+      <br></br>
+      Regards,
+      <br></br>
+      Team Ms Teams</p>`,
+      text: 'Vaccines available in your area! Book them now.'
+    };
+
+    transporter.sendMail(mailOptions, function(error, info){
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Email sent: ' + info.response);
+      }
+    });
+  })
+
   socket.on('join-room', (roomId, userId) => {
     socket.join(roomId)
     socket.to(roomId).broadcast.emit('user-connected', userId)

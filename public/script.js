@@ -7,6 +7,7 @@ const mic = document.getElementById('element-4')
 const vid = document.getElementById('element-2')
 const input = document.getElementById('message-input')
 const share = document.getElementById('element-5')
+const shareLink = document.getElementById('share-button')
 
 
 //Added TURN and STUN server configuration for
@@ -330,6 +331,12 @@ vid.addEventListener('click', function(e){
 //LISTENS TO BUTTON CLICK THAT SHARES SCREEN
 share.addEventListener('click',function(e){
   shareScreen()
+})
+
+//LISTENS TO BUTTON CLICK THAT SHARES LINK WITH OTHERS
+shareLink.addEventListener('click',function(e){
+  const mailId = document.getElementById('mailid').value;
+  socket.emit('share-link', mailId,user,ROOM_ID);
 })
 
 //triggers the send-message event
