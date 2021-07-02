@@ -94,6 +94,10 @@ app.get('/home/404',(req,res) => {
   res.render('404')
 })
 
+app.get('/home/whiteboard',(req,res) => {
+  res.render('whiteboard')
+})
+
 io.on('connection', socket => {
   socket.on('send-message',(id,message,room) => {
     socket.to(room).broadcast.emit('receive-message',id,message)

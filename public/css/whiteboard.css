@@ -1,0 +1,10 @@
+.iframe{
+    height: 600px;
+    max-height: 100%;
+    width: 90%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}

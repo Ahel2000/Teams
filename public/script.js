@@ -8,6 +8,7 @@ const vid = document.getElementById('element-2')
 const input = document.getElementById('message-input')
 const share = document.getElementById('element-5')
 const shareLink = document.getElementById('share-button')
+const record = document.getElementById('element-6')
 
 
 //Added TURN and STUN server configuration for
@@ -228,6 +229,49 @@ async function shareScreen(){
 }
 
 
+/*
+
+The next few lines of code contain the code snippets
+that are used to record the meeting
+
+*/
+
+const start = async () => {
+  const stream = await navigator.mediaDevices.getDisplayMedia({
+    video: {
+      mediaSource: "screen",
+    }
+  })
+
+  const data = []
+  const mediaRecorder = new mediaRecorder(stream)
+
+  mediaRecorder.ondataavailable = (e) => {
+    data.push(e.data)
+  }
+
+  mediaRecorder.start()
+  mediaRecorder.onStop = (e) => {
+    
+    var url = URL.createObjectURL(
+      new Blob(data, {
+        type: 'video/webm',
+      })
+    )
+
+    let a = document.createElement('a')
+    document.body.appendChild(a)
+    a.style = "display: none"
+    a.href = url
+    a.download = "test.webm"
+    a.click()
+    window.URL.revokeObjectURL(url)
+
+  }
+  
+}
+
+
 
 
 /*The next few lines of code contain the code snippets 
@@ -337,6 +381,10 @@ share.addEventListener('click',function(e){
 shareLink.addEventListener('click',function(e){
   const mailId = document.getElementById('mailid').value;
   socket.emit('share-link', mailId,user,ROOM_ID);
+})
+
+record.addEventListener('click',function(e){
+  start()
 })
 
 //triggers the send-message event
