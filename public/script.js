@@ -40,12 +40,17 @@ const myPeer = new Peer(undefined, {
 var user = window.sessionStorage.getItem('Name')
 if(user === null)user = 'Anonymous'
 
+//retrieves the audio preferences of the user
+//default is audio switched off
 var audioSettings = window.sessionStorage.getItem('AudioSettings')
 if(audioSettings == null)audioSettings = 'Off'
-
+//retrieves the video preferences of the user
+//default is video switched off
 var videoSettings = window.sessionStorage.getItem('VideoSettings')
 if(videoSettings == null)videoSettings = 'Off'
 
+
+//Firebase configurations of the app
 var firebaseConfig = {
   apiKey: "AIzaSyAZYrdWPPo3xwJ8MrKQxDreCO6BbN5RSqs",
   authDomain: "teamsclonesite.firebaseapp.com",
@@ -90,8 +95,7 @@ navigator.mediaDevices.getUserMedia({
   myVideoStream = stream
   //ADDS MY OWN VIDEO TO THE SCREEN
   addVideoStream(myVideo, stream)
-  if(audioSettings == 'Off')muteUnmute()
-  if(videoSettings == 'Off')videoOnOff()
+  
 
   //FETCH THE VIDEO STREAM OF EVERY OTHER USER
   myPeer.on('call', call => {
@@ -109,6 +113,9 @@ navigator.mediaDevices.getUserMedia({
   socket.on('user-connected', userId => {
     setTimeout(connectToNewUser,1000,userId, stream)
   })
+
+  if(audioSettings == 'Off')muteUnmute()
+  if(videoSettings == 'Off')videoOnOff()
 })
 
 socket.on('user-disconnected', userId => {
