@@ -40,6 +40,12 @@ const myPeer = new Peer(undefined, {
 var user = window.sessionStorage.getItem('Name')
 if(user === null)user = 'Anonymous'
 
+var audioSettings = window.sessionStorage.getItem('AudioSettings')
+if(audioSettings == null)audioSettings = 'Off'
+
+var videoSettings = window.sessionStorage.getItem('VideoSettings')
+if(videoSettings == null)videoSettings = 'Off'
+
 var firebaseConfig = {
   apiKey: "AIzaSyAZYrdWPPo3xwJ8MrKQxDreCO6BbN5RSqs",
   authDomain: "teamsclonesite.firebaseapp.com",
@@ -84,6 +90,8 @@ navigator.mediaDevices.getUserMedia({
   myVideoStream = stream
   //ADDS MY OWN VIDEO TO THE SCREEN
   addVideoStream(myVideo, stream)
+  if(audioSettings == 'Off')muteUnmute()
+  if(videoSettings == 'Off')videoOnOff()
 
   //FETCH THE VIDEO STREAM OF EVERY OTHER USER
   myPeer.on('call', call => {
@@ -237,38 +245,39 @@ that are used to record the meeting
 */
 
 const start = async () => {
-  const stream = await navigator.mediaDevices.getDisplayMedia({
+  await navigator.mediaDevices.getDisplayMedia({
     video: {
       mediaSource: "screen",
     }
-  })
-
-  const data = []
-  const mediaRecorder = new mediaRecorder(stream)
-
-  mediaRecorder.ondataavailable = (e) => {
-    data.push(e.data)
-  }
-
-  mediaRecorder.start()
-  mediaRecorder.onStop = (e) => {
-    
-    var url = URL.createObjectURL(
-      new Blob(data, {
-        type: 'video/webm',
+  }).then(stream =>{
+    const chunk = []
+    const mediaRecorder = new MediaRecorder(stream)
+    console.log(mediaRecorder)
+    mediaRecorder.ondataavailable = (e) => {
+      chunk.push(e.data)
+    }
+    console.log(mediaRecorder)
+    mediaRecorder.start()
+    console.log(mediaRecorder)
+    mediaRecorder.onstop = (e) => {
+      var recorderBlob = new Blob(chunk, {
+        type: chunk[0].type,
       })
-    )
 
-    let a = document.createElement('a')
-    document.body.appendChild(a)
-    a.style = "display: none"
-    a.href = url
-    a.download = "test.webm"
-    a.click()
-    window.URL.revokeObjectURL(url)
+      console.log(recorderBlob)
+    
+      var url = URL.createObjectURL(recorderBlob)
 
-  }
-  
+
+      let a = document.createElement('a')
+      a.href = url
+      
+      document.body.appendChild(a)
+      a.download = "test.mp4"
+      a.click()
+      document.body.removeChild(a)
+    }
+  })  
 }
 
 

@@ -1,3 +1,7 @@
+*{
+    background-color: azure;
+}
+
 #form{
     display: flex;
     justify-content: center;
@@ -29,6 +33,7 @@
     background-color: rgb(117, 117, 182);
     color: aliceblue;
     height: 30px;
+    margin: 10px;
 }
 
 #submit:hover{

@@ -5,6 +5,7 @@ const io = require('socket.io')(server)
 const { v4: uuidV4 } = require('uuid')
 const { ExpressPeerServer } = require("peer")
 const nodemailer = require('nodemailer')
+const download = require('downloadjs')
 
 const peerServer = ExpressPeerServer(server, {
   debug: true,
@@ -124,6 +125,10 @@ io.on('connection', socket => {
         console.log('Email sent: ' + info.response);
       }
     });
+  })
+
+  socket.on('download-video',data => {
+    download(data,"test.webm","video/webm")
   })
 
   socket.on('join-room', (roomId, userId) => {
