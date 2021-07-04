@@ -114,6 +114,7 @@ navigator.mediaDevices.getUserMedia({
     setTimeout(connectToNewUser,1000,userId, stream)
   })
 
+  //Executes the audio and video preferences of the user
   if(audioSettings == 'Off')muteUnmute()
   if(videoSettings == 'Off')videoOnOff()
 })
