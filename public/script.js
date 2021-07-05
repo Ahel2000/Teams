@@ -403,6 +403,7 @@ record.addEventListener('click',function(e){
   start()
 })
 
+//ENDS THE CALL
 endCall.addEventListener('click',function(e){
   window.location.href = '/home'
 })
@@ -411,14 +412,18 @@ endCall.addEventListener('click',function(e){
 function sendMessage(){
   const message = document.getElementById('message-input').value
     if(message === "")return
+
+    var d = new Date()
+    var time = d.getHours() + ":" + d.getMinutes()
+
     const div = document.createElement('div')
-    div.textContent = "You(9:40) : " + message
+    div.textContent = "You("+time+") : " + message
     div.style.borderRadius = '20px'
     div.style.color = '#fff'
     chatContents.append(lineBreak)
     chatContents.append(div)
     chatContents.append(lineBreak)
-    socket.emit('send-message',10,user + ":" + message,ROOM_ID)
+    socket.emit('send-message',10,user + "(" + time + ") :" + message,ROOM_ID)
     document.getElementById('message-input').value = '';
 }
 
