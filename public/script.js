@@ -5,6 +5,7 @@ const send = document.getElementById('send-button')
 const lineBreak = document.createElement("br")
 const mic = document.getElementById('element-4')
 const vid = document.getElementById('element-2')
+const endCall = document.getElementById('element-3')
 const input = document.getElementById('message-input')
 const share = document.getElementById('element-5')
 const shareLink = document.getElementById('share-button')
@@ -44,6 +45,7 @@ if(user === null)user = 'Anonymous'
 //default is audio switched off
 var audioSettings = window.sessionStorage.getItem('AudioSettings')
 if(audioSettings == null)audioSettings = 'Off'
+
 //retrieves the video preferences of the user
 //default is video switched off
 var videoSettings = window.sessionStorage.getItem('VideoSettings')
@@ -64,11 +66,8 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
 var flag = 0;
-//getData()
 
 
-console.log("After function")  
-//if(flag === 0)window.location.href ="/create-meeting"
 const myVideo = document.createElement('video')
 myVideo.controls = true;
 
@@ -120,7 +119,6 @@ navigator.mediaDevices.getUserMedia({
 })
 
 socket.on('user-disconnected', userId => {
-  //if (peers[userId]) 
   peers[userId].close()
 })
 
@@ -400,8 +398,13 @@ shareLink.addEventListener('click',function(e){
   socket.emit('share-link', mailId,user,ROOM_ID);
 })
 
+//STARTS RECORDING THE SCREEN
 record.addEventListener('click',function(e){
   start()
+})
+
+endCall.addEventListener('click',function(e){
+  window.location.href = '/home'
 })
 
 //triggers the send-message event
