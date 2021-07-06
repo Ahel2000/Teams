@@ -1,15 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel = "stylesheet" type="text/css" href="/css/whiteboard.css"/>
-  <title>Teams WhiteBoard</title>
-  
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>White Board</title>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+            overflow:hidden;
+        }
+
+        .header{
+          position: absolute;
+          top: 10px;
+          left: 0;
+          right: 0;
+          text-align: center;
+          justify-content: center;
+          margin: auto;
+          font-family: cursive;
+          color: maroon;
+        }
+
+        .nav{
+            background-color:#DCDCDC;
+            position:fixed;
+            right:0;
+            bottom:40%;
+        }
+        .nav_items li{
+            padding:10px;
+            cursor:pointer;
+        }
+        #red{
+            color:red;
+        }
+        #blue{
+            color:blue;
+        }
+        #green{
+            color:green;
+        }
+        #black{
+            color:black;
+        }
+        #yellow{
+            color:yellow;
+        }
+        .nav_items li:hover{
+            background-color:#696969;
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/1e2c9bf03f.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <h1 style="text-align: center; color: aqua; font-family: Georgia, 'Times New Roman', Times, serif;">Microsoft Teams WhiteBoard</h1>
-  <iframe class="iframe" src="https://writeon.netlify.app"></iframe>
+    <div class="nav">
+        <ul class="nav_items">
+            <li class="red_pen" id="red"><i class="fas fa-pen"></i></li>
+            <li class="blue_pen" id="blue"><i class="fas fa-pen"></i></li>
+            <li class="green_pen" id="green"><i class="fas fa-pen"></i></li>
+            <li class="black_pen" id="black"><i class="fas fa-pen"></i></li>
+            <li class="highlighter_pen" id="yellow"><i class="fas fa-highlighter"></i></li>
+            <li class="Eraser" id="rubber"><i class="fas fa-eraser"></i></li>
+            <li class="clear" id="clear"><i class="fas fa-trash-alt"></i></li>
+            <li class="save" id="save"><i class="fas fa-save"></i></i></li>
+        </ul>
+    </div>
+    <h1 class="header">Teams Whiteboard</h1>
+    <canvas id="board">
+    </canvas>
+    <script type="text/javascript" src="/whiteboard.js"></script>
 </body>
 </html>
