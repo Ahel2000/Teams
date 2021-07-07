@@ -108,10 +108,10 @@ io.on('connection', socket => {
     var mailOptions = {
       from: 'msteams72@gmail.com',
       to: mailId,
-      //to: 'saha@bluezeal.in',
       subject: user + ' invited you to a Teams meeting',
       html: `<p>Please visit <a href='https://stormy-brook-32763.herokuapp.com/join-meeting'>here</a> and enter the Meeting Id <b>${roomId}</b> when prompted.
       <br></br>
+      <p>Or you may also join the meeting directly from <a href='https://stormy-brook-32763.herokuapp.com/${roomId}'>here</a>. Your video and audio will both be switched off by default.</p>
       Regards,
       <br></br>
       MS Teams</p>`,
