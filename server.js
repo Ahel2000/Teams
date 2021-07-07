@@ -44,8 +44,8 @@ app.get('/home/create-meeting',(req,res) => {
 var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'aheldc@gmail.com',
-    pass: '****************************'
+    user: 'msteams72@gmail.com',
+    pass: 'Demo@2021'
   }
 });
 
@@ -106,7 +106,7 @@ io.on('connection', socket => {
 
   socket.on('share-link',(mailId,user,roomId) => {
     var mailOptions = {
-      from: 'aheldc@gmail.com',
+      from: 'msteams72@gmail.com',
       to: mailId,
       //to: 'saha@bluezeal.in',
       subject: user + ' invited you to a Teams meeting',
@@ -114,8 +114,7 @@ io.on('connection', socket => {
       <br></br>
       Regards,
       <br></br>
-      Team Ms Teams</p>`,
-      text: 'Vaccines available in your area! Book them now.'
+      MS Teams</p>`,
     };
 
     transporter.sendMail(mailOptions, function(error, info){

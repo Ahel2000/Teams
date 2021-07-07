@@ -310,7 +310,7 @@ function muteUnmute(){
 
 //CHANGES THE MIC ICON TO MUTED MIC ICON
 function setUnmuteButton(){
-  const html = `<i class="unmute fa fa-microphone-slash" style="color: red; background-color: aliceblue;"></i>`;
+  const html = `<i class="unmute fa fa-microphone-slash" style="color: green; background-color: aliceblue;"></i>`;
   document.getElementById("element-4").innerHTML = html;
 }
 
@@ -348,7 +348,7 @@ function setVideoButton(){
 
 //CHANGES PAUSED ICON TO VIDEO ICON
 function unsetVideoButton(){
-  const html = `<i class="unmute fa fa-play" style="color: red; background-color: aliceblue;"></i>`;
+  const html = `<i class="unmute fa fa-play" style="color: green; background-color: aliceblue;"></i>`;
   document.getElementById("element-2").innerHTML = html;
 }
 

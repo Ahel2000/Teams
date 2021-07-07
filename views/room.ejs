@@ -45,15 +45,14 @@
     }
 
     #share-button{
-      height: 30px;
+      height: 35px;
+      width: 35px;
       background-color: aliceblue;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       border-radius: 10px;
-    }
-
-    #share-button:hover{
-      background-color: aqua;
-      transform: scaleX(1.1);
-      transform: scaleY(1.1);
+      cursor: pointer;
     }
 
     #videopluschat{
@@ -138,7 +137,7 @@
     .control-panel-wrapper{
       position: absolute;
       bottom: 0px;
-      background-color: aliceblue;
+      background-color: black;
       display: flex;
       justify-content: center;
       width: 100%;
@@ -151,7 +150,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: aliceblue;
+      background-color: black;
     }
 
     .control-elements{
@@ -178,14 +177,30 @@
       align-items: center;
     }
 
+    .board{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: aliceblue;
+      height: 30px;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid green;
+    }
+
+    .board:hover{
+      transform: scaleX(1.2);
+      transform: scaleY(1.2);
+    }
   </style>
 </head>
 <body>
   <div class="share-wrapper">
     <form class="share-form">
-      <input id="mailid" type="email" placeholder="Enter mail id..."></input>
+      <input id="mailid" type="email" placeholder="Share the link with others..."></input>
       <button type="button" id="share-button">
-        <i class="fa fa-share" style="background-color: aliceblue; color: red"></i>Share
+        <img src="/assets/share-icon.png" alt="" height="30" width="30" style="background-color: aliceblue;"/>
+        
       </button>
     </form>
   </div>
@@ -243,10 +258,12 @@
         <i class="fa fa-share" style="color: red; background-color: aliceblue;"></i>
         
       </div>
-      <div class="control-elements" id="element-6">
-        <a href="/home/whiteboard" target="_blank"><i class="fa fa-clipboard" style="color: red; background-color: aliceblue;"></i></a>
-        
+      <a href='/home/whiteboard' target='_blank'>
+      <div class="board">
+        <img src="/assets/whiteboard-icon.jpg" width="50" height="50" alt=""/>
+        <h5 style="background-color: aliceblue; font-family: cursive;">WhiteBoard</h5>
       </div>
+      </a>
     </div>
   </div>
 </div>
