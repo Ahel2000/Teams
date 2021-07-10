@@ -281,6 +281,7 @@ const start = async () => {
 
       setTimeout( () => {
         chunk = [];
+        socket.emit('send-message',10,"⚠️Teams: Recording has been stopped!!!!",ROOM_ID)
     }, 3000 );
     }
   })  
