@@ -257,7 +257,9 @@ const start = async () => {
     }
   }).then(stream =>{
     var chunk = []
-    const mediaRecorder = new MediaRecorder(stream)
+    const mediaRecorder = new MediaRecorder(stream,{
+      mimeType: 'video/webm;codecs=vp9'
+  })
     
     mediaRecorder.start(1000)
     mediaRecorder.ondataavailable = (e) => {
