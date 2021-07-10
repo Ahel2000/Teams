@@ -265,6 +265,8 @@ const start = async () => {
     mediaRecorder.ondataavailable = (e) => {
       chunk.push(e.data)
     }
+
+    socket.emit('send-message',10,"⚠️Teams: This meeting is being recorded!!!!",ROOM_ID)
     
     mediaRecorder.onstop = (e) => {
       var recorderBlob = new Blob(chunk, {
