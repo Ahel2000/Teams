@@ -256,32 +256,28 @@ const start = async () => {
       mediaSource: "screen",
     }
   }).then(stream =>{
-    const chunk = []
+    var chunk = []
     const mediaRecorder = new MediaRecorder(stream)
-    console.log(mediaRecorder)
+    
+    mediaRecorder.start(1000)
     mediaRecorder.ondataavailable = (e) => {
       chunk.push(e.data)
     }
-    console.log(mediaRecorder)
-    mediaRecorder.start()
-    console.log(mediaRecorder)
+    
     mediaRecorder.onstop = (e) => {
       var recorderBlob = new Blob(chunk, {
         type: chunk[0].type,
       })
 
       console.log(recorderBlob)
-    
-      var url = URL.createObjectURL(recorderBlob)
 
+      let file = new File( [recorderBlob], `record.webm` );
 
-      let a = document.createElement('a')
-      a.href = url
-      
-      document.body.appendChild(a)
-      a.download = "test.mp4"
-      a.click()
-      document.body.removeChild(a)
+      saveAs( file )
+
+      setTimeout( () => {
+        chunk = [];
+    }, 3000 );
     }
   })  
 }
