@@ -178,6 +178,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      cursor: pointer;
     }
 
     .board{
@@ -189,6 +190,8 @@
       padding: 10px;
       border-radius: 10px;
       border: 1px solid green;
+      margin: 1px;
+      cursor: pointer;
     }
 
     .board:hover{
@@ -254,16 +257,17 @@
         <i class="fa fa-upload" style="color: red; background-color: aliceblue;"></i>
         
       </div>
-      <div class="control-elements" id="element-6">
-        <i class="fa fa-share" style="color: red; background-color: aliceblue;"></i>
-        
-      </div>
+      
       <a href='/home/whiteboard' target='_blank'>
       <div class="board">
         <img src="/assets/whiteboard-icon.jpg" width="50" height="50" alt=""/>
         <h5 style="background-color: aliceblue; font-family: cursive;">WhiteBoard</h5>
       </div>
       </a>
+      <div class='board' id='element-6' style="width: 100px;">
+        <img src="/assets/recording-icon.jpg" width="50" height="50" alt=""/>
+        <h5 style="background-color: aliceblue; font-family: cursive;">Record</h5>
+      </div>
     </div>
   </div>
 </div>
