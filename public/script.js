@@ -192,7 +192,7 @@ If not present, redirects to 404 not found page
 db.collection('meetings').get().then((querySnapshop) => {
   querySnapshop.forEach((doc)=>{
     const meetingId = doc.data().meetingId;
-    console.log(meetingId)
+    
     if(meetingId == ROOM_ID){
       flag = 1;
     }
@@ -201,7 +201,6 @@ db.collection('meetings').get().then((querySnapshop) => {
 
 setTimeout(function(){
   if(flag == 0)window.location.href ="/home/404"
-  console.log("flag:",flag)
 },3000);
 
 
@@ -217,7 +216,6 @@ async function shareScreen(){
   console.log(myPeer._connections.entries())
   await navigator.mediaDevices.getDisplayMedia().then(stream => {
     for(let [key,value] of myPeer._connections.entries()){
-      console.log(myPeer._connections.get(key))
       myPeer._connections.get(key)[0]
       .peerConnection.getSenders()[1]
       .replaceTrack(stream.getTracks()[0])
@@ -230,7 +228,6 @@ async function shareScreen(){
         audio: true
       }).then(stream => {
         for(let [key,value] of myPeer._connections.entries()){
-        console.log(myPeer._connections.get(key))
         myPeer._connections.get(key)[0]
         .peerConnection.getSenders()[1]
         .replaceTrack(myVideoStream.getTracks()[1])
@@ -273,7 +270,6 @@ const start = async () => {
         type: chunk[0].type,
       })
 
-      console.log(recorderBlob)
 
       let file = new File( [recorderBlob], `record.webm` );
 
@@ -297,8 +293,6 @@ that are used to change the audio settings during a conference
 
 //MUTE OR UNMUTE THE MIC
 function muteUnmute(){
-  console.log(myVideoStream)
-  console.log(myVideoStream.getAudioTracks())
   const enabled = myVideoStream.getAudioTracks()[0].enabled
   if (enabled) {
     myVideoStream.getAudioTracks()[0].enabled = false
