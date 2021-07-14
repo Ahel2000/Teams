@@ -36,3 +36,6 @@ A simple clone of Microsoft Teams built using NodeJs, WebRTC and Firebase. The u
 ## Screen Share
 <img src='/screenshots/ss9.png'/>
 <img src='/screenshots/ss10.png'/>
+
+## Invite users:
+<img src='/screenshots/ss11.png'/>
