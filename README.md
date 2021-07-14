@@ -12,11 +12,23 @@ A simple clone of Microsoft Teams built using NodeJs, WebRTC and Firebase. The u
 - Invite others directly from site by providing their mail ids
 
 # Snapshots of the site:
+## Join/Create a meeting:
 <img src='/screenshots/ss1.png'/>
+
+## Enter name and video/audio preferences:
 <img src='/screenshots/ss2.png'/>
+
+## The main page: 
 <img src='/screenshots/ss3.png'/>
+
+## Chat with other users:
 <img src='/screenshots/ss4.png'/>
+
 <img src='/screenshots/ss5.png'/>
 <img src='/screenshots/ss6.png'/>
+
+## Whiteboard
 <img src='/screenshots/ss7.png'/>
+
+## Redirect to 404 not found page if user puts in wrong meeting id:
 <img src='/screenshots/ss8.png'/>
