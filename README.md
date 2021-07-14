@@ -32,3 +32,7 @@ A simple clone of Microsoft Teams built using NodeJs, WebRTC and Firebase. The u
 
 ## Redirect to 404 not found page if user puts in wrong meeting id:
 <img src='/screenshots/ss8.png'/>
+
+## Screen Share
+<img src='/screenshots/ss9.png'/>
+<img src='/screenshots/ss10.png'/>
