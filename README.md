@@ -10,3 +10,13 @@ A simple clone of Microsoft Teams built using NodeJs, WebRTC and Firebase. The u
 - Whiteboard integrated with the site
 - Share screen with other participants
 - Invite others directly from site by providing their mail ids
+
+# Snapshots of the site:
+<img src='/screenshots/ss1.png'/>
+<img src='/screenshots/ss2.png'/>
+<img src='/screenshots/ss3.png'/>
+<img src='/screenshots/ss4.png'/>
+<img src='/screenshots/ss5.png'/>
+<img src='/screenshots/ss6.png'/>
+<img src='/screenshots/ss7.png'/>
+<img src='/screenshots/ss8.png'/>
