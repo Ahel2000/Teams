@@ -54,12 +54,12 @@ if(videoSettings == null)videoSettings = 'Off'
 
 //Firebase configurations of the app
 var firebaseConfig = {
-  apiKey: "AIzaSyAZYrdWPPo3xwJ8MrKQxDreCO6BbN5RSqs",
-  authDomain: "teamsclonesite.firebaseapp.com",
+  apiKey: "*************************************************************",
+  authDomain: "******************************",
   projectId: "teamsclonesite",
   storageBucket: "teamsclonesite.appspot.com",
-  messagingSenderId: "292225232182",
-  appId: "1:292225232182:web:0b58800c63f20865875797"
+  messagingSenderId: "*********************************",
+  appId: "***********************************************"
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
